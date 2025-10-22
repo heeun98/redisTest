@@ -86,6 +86,7 @@ public class ArticleService {
     })
     public void delete(Long id) {
         repo.deleteById(id);
+
     }
 
 
