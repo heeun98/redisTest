@@ -21,7 +21,6 @@ public class Article {
     private Long likes;
 
 
-
     public Article(String title, String body) {
         this.title = title;
         this.body = body;

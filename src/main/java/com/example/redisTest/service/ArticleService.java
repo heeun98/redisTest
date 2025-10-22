@@ -78,6 +78,7 @@ public class ArticleService {
         // 변경 감지 → save 호출 안 해도 됨
         return new ArticleCacheDto(article.getId(), article.getTitle(), article.getBody());
     }
+
     /** 삭제: @CacheEvict → DB 삭제 후 캐시에서 해당 키 제거 */
     @Transactional
     @Caching(evict = {

@@ -10,6 +10,5 @@ import lombok.Data;
 public class RequestDto {
     private Long id;
     private String title;
-
     private String body;
 }

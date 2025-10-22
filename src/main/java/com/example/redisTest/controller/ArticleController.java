@@ -63,10 +63,13 @@ public class ArticleController {
         return service.update(article);
     }
 */
+
     // 삭제 (캐시 @CacheEvict)
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
+
         service.delete(id);
     }
 }
