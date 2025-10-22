@@ -13,11 +13,9 @@ public class PostLikeService {
 
     private final StringRedisTemplate redisTemplate;
     private final String key = "post::";
-
     public PostLikesDto addLikes(Long postId, Long userId) {
 
         String key = buildKey(postId);
-
         // post::postId Set 에 userId 가 존재하는지
         // sismember post::postId userId
         Boolean isMember = redisTemplate.opsForSet().isMember(key, String.valueOf(userId));
@@ -30,7 +28,6 @@ public class PostLikeService {
         Long likesSize = redisTemplate.opsForSet().size(key);
 
         return new PostLikesDto(postId, likesSize);
-
     }
 
     public String buildKey(Long postId) {

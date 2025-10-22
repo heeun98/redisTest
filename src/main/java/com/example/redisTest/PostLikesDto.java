@@ -7,6 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class PostLikesDto {
     Long postId;
-
     Long likesCount;
 }

@@ -48,10 +48,10 @@ public class ArticleController {
         log.info("time={}", end - start);
         return articleCacheDto;
     }
-
     // 생성 (캐시 @CachePut)
     @PostMapping
     public ArticleCacheDto create(@RequestBody RequestDto article) {
+
         return service.create(article);
     }
 
