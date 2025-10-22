@@ -43,6 +43,17 @@ public class ArticleService {
 
     }
 
+    @Transactional
+    public ArticleCacheDto getById2(Long id) {
+
+        long start = System.currentTimeMillis();
+        Article article = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException());
+
+        return new ArticleCacheDto(article.getId(), article.getTitle(), article.getBody());
+
+    }
+
     /** DB 반영: 메서드 로직(repo.save())으로 처리
      캐시 반영: 메서드 반환값을 무조건 캐시에 저장 */
     @Transactional
@@ -57,16 +68,16 @@ public class ArticleService {
     }
 
 
-    /** 수정: @CachePut → DB 업데이트 후 캐시도 갱신 */
-    /** @CachePut 은 메서드 리턴값을 반드시 캐시에 덮어씌운다. */
     @Transactional
-    @CachePut(key = "#article.id")
+    @CachePut(key = "#articleDto.id")
     @CacheEvict(key = "'all'")
-    public Article update(Article article) {
-        if (!repo.existsById(article.getId())) {
-            throw new EntityNotFoundException("Article not found");
-        }
-        return repo.save(article);
+    public ArticleCacheDto update(RequestDto articleDto) {
+        Article article = repo.findById(articleDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("not found"));
+        article.setTitle(articleDto.getTitle());
+        article.setBody(articleDto.getBody());
+        // 변경 감지 → save 호출 안 해도 됨
+        return new ArticleCacheDto(article.getId(), article.getTitle(), article.getBody());
     }
 
     /** 삭제: @CacheEvict → DB 삭제 후 캐시에서 해당 키 제거 */
