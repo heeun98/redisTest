@@ -31,5 +31,4 @@ public class PostLikeService {
     public String buildKey(Long postId) {
         return key + postId;
     }
-
 }
