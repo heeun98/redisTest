@@ -28,8 +28,9 @@ public class PostLikeService {
 
         return new PostLikesDto(postId, likesSize);
     }
+
     public String buildKey(Long postId) {
         return key + postId;
-    }
 
+    }
 }

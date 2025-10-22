@@ -51,10 +51,10 @@ public class RedisConfig {
                 )                                                                // 값은 JSON
                 // (선택) null 값 캐싱 방지
                 .disableCachingNullValues();
-
         // 3) CacheManager 빌더에 설정 적용
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(cacheConfig)
                 .build();
+
     }
 }
