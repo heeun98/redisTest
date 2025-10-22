@@ -8,5 +8,4 @@ import lombok.Data;
 public class PostLikesDto {
     Long postId;
     Long likesCount;
-
 }
