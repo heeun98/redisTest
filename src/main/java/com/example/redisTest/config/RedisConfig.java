@@ -16,7 +16,6 @@ import static org.springframework.data.redis.serializer.RedisSerializationContex
 @Configuration
 @EnableCaching
 public class RedisConfig {
-
     @Bean
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
         return new StringRedisTemplate(factory);
@@ -35,13 +34,13 @@ public class RedisConfig {
      * 조회 메서드 결과를 “자동으로” 캐싱하고 싶을 때
      * “캐시 추상화” 레벨에서 작업을 끝내고 싶은 경우
      */
+
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 
         // 1) JSON 직렬화를 위한 Serializer 준비
         GenericJackson2JsonRedisSerializer jsonSerializer =
                 new GenericJackson2JsonRedisSerializer();
-
         // 2) 캐시 설정: TTL 60초, 키는 String, 값은 JSON
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(6000))                                // TTL 60초
@@ -51,7 +50,6 @@ public class RedisConfig {
                 .serializeValuesWith(
                         fromSerializer(jsonSerializer)
                 )                                                                // 값은 JSON
-
                 // (선택) null 값 캐싱 방지
                 .disableCachingNullValues();
 

@@ -19,6 +19,7 @@ public class Article {
     private String body;
     private Long likes;
 
+
     public Article(String title, String body) {
         this.title = title;
         this.body = body;

@@ -42,6 +42,7 @@ public class SwaggerConfig {
                 .scheme("bearer")
                 .bearerFormat("JWT");
 
+
         SecurityRequirement securityRequirement = new SecurityRequirement()
                 .addList("Bearer Token");
 

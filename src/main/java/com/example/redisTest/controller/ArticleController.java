@@ -42,7 +42,6 @@ public class ArticleController {
     // 단건 조회 (캐시 @Cacheable)
     @GetMapping("/{id}")
     public ArticleCacheDto get(@PathVariable Long id) {
-
         long start = System.currentTimeMillis();
         ArticleCacheDto articleCacheDto = service.getById(id);
         long end = System.currentTimeMillis();

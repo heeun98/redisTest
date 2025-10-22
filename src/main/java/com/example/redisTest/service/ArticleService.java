@@ -67,7 +67,6 @@ public class ArticleService {
         return new ArticleCacheDto(article.getId(), article.getTitle(), article.getBody());
     }
 
-
     @Transactional
     @CachePut(key = "#articleDto.id")
     @CacheEvict(key = "'all'")

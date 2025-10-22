@@ -25,14 +25,11 @@ public class PostLikeService {
         //존재안하면
         // sadd key String.value(userId)
         redisTemplate.opsForSet().add(key, String.valueOf(userId));
-
-
         //현재 좋아요 개수
         // scard key
         Long likesSize = redisTemplate.opsForSet().size(key);
 
         return new PostLikesDto(postId, likesSize);
-
 
     }
 
