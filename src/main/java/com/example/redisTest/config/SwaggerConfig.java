@@ -33,7 +33,6 @@ import static io.swagger.v3.oas.models.security.SecurityScheme.Type.HTTP;
 @Configuration
 public class SwaggerConfig {
 
-
     @Bean
     public OpenAPI openAPI() {
         SecurityScheme apiKey = new SecurityScheme()
