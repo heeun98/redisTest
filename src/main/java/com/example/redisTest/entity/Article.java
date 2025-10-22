@@ -23,7 +23,6 @@ public class Article {
     public Article(String title, String body) {
         this.title = title;
         this.body = body;
-
     }
 
 
