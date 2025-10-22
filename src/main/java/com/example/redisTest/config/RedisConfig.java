@@ -34,7 +34,6 @@ public class RedisConfig {
      * 조회 메서드 결과를 “자동으로” 캐싱하고 싶을 때
      * “캐시 추상화” 레벨에서 작업을 끝내고 싶은 경우
      */
-
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 
